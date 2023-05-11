@@ -19,11 +19,11 @@ public class EnderecoController {
     private EnderecoService enderecoService;
 
     @PostMapping
-    public ResponseEntity<Object> cadastrarEndereco(@RequestBody Endereco endereco) {
+    public ResponseEntity<?> cadastrarEndereco(@RequestBody Endereco endereco) {
         try {
             enderecoService.validarEndereco(endereco);
             enderecoService.salvarEndereco(endereco);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
+            return ResponseEntity.status(HttpStatus.CREATED).body(endereco);
         } catch (EnderecoInvalidoException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
