@@ -1,6 +1,6 @@
 package com.fiapadj.fase1.services;
 
-import com.fiapadj.fase1.dominio.Endereco;
+import com.fiapadj.fase1.services.dominio.Endereco;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -27,10 +27,22 @@ public class EnderecoService {
         }
     }
 
+    public Endereco buscarEnderecoPorId(Integer idEndereco) {
+        for (Endereco endereco : enderecos) {
+            if (endereco.getIdEndereco().equals(idEndereco)) {
+                return endereco;
+            }
+        }
+        return null;
+    }
+
     private Set<Endereco> enderecos = new HashSet<>();
 
     public void salvarEndereco(Endereco endereco) {
+
+        endereco.setIdEndereco(enderecos.size());
         enderecos.add(endereco);
+
     }
 
     public Set<Endereco> listarEnderecos() {

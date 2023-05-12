@@ -1,15 +1,14 @@
 package com.fiapadj.fase1.controller;
 
-import com.fiapadj.fase1.dominio.Endereco;
+import com.fiapadj.fase1.services.dominio.Endereco;
 import com.fiapadj.fase1.services.EnderecoInvalidoException;
 import com.fiapadj.fase1.services.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/endereco")
@@ -28,5 +27,17 @@ public class EnderecoController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+
+    @GetMapping("/{idEndereco}")
+    public ResponseEntity<Endereco> consultarEnderecoPorId(@PathVariable Integer idEndereco) {
+        Optional<Endereco> endereco = Optional.ofNullable(enderecoService.buscarEnderecoPorId(idEndereco));
+            if (endereco.isPresent()) {
+                return ResponseEntity.ok().body(endereco.get());
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+    }
 }
+
 
