@@ -1,6 +1,6 @@
 package com.fiapadj.fase1.services;
 
-import com.fiapadj.fase1.services.dominio.Endereco;
+import com.fiapadj.fase1.dominio.Endereco;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;

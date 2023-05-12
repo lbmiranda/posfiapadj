@@ -1,6 +1,6 @@
 package com.fiapadj.fase1.controller;
 
-import com.fiapadj.fase1.services.dominio.Endereco;
+import com.fiapadj.fase1.dominio.Endereco;
 import com.fiapadj.fase1.services.EnderecoInvalidoException;
 import com.fiapadj.fase1.services.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.fiapadj.fase1.services.dominio;
+package com.fiapadj.fase1.dominio;
 
 
 
