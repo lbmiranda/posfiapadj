@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/endereco")
 public class EnderecoController {
@@ -31,9 +29,9 @@ public class EnderecoController {
 
     @GetMapping("/{idEndereco}")
     public ResponseEntity<Endereco> consultarEnderecoPorId(@PathVariable Integer idEndereco) {
-        Optional<Endereco> endereco = Optional.ofNullable(enderecoService.buscarEnderecoPorId(idEndereco));
-            if (endereco.isPresent()) {
-                return ResponseEntity.ok().body(endereco.get());
+        Endereco endereco = enderecoService.buscarEnderecoPorId(idEndereco);
+            if (endereco != null) {
+                return ResponseEntity.ok().body(endereco);
             } else {
                 return ResponseEntity.notFound().build();
             }
