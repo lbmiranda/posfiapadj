@@ -1,5 +1,6 @@
 package com.fiapadj.fase1.controller;
 
+import com.fiapadj.fase1.controller.form.EnderecoForm;
 import com.fiapadj.fase1.dominio.Endereco;
 import com.fiapadj.fase1.services.EnderecoInvalidoException;
 import com.fiapadj.fase1.services.EnderecoService;
@@ -16,7 +17,8 @@ public class EnderecoController {
     private EnderecoService enderecoService;
 
     @PostMapping
-    public ResponseEntity<?> cadastrarEndereco(@RequestBody Endereco endereco) {
+    public ResponseEntity<?> cadastrarEndereco(@RequestBody EnderecoForm enderecoForm) {
+        Endereco endereco = enderecoForm.toEndereco();
         try {
             enderecoService.validarEndereco(endereco);
             enderecoService.salvarEndereco(endereco);

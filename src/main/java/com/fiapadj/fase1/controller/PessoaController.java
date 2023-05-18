@@ -1,6 +1,6 @@
 package com.fiapadj.fase1.controller;
 
-import com.fiapadj.fase1.dominio.Endereco;
+import com.fiapadj.fase1.controller.form.PessoasForm;
 import com.fiapadj.fase1.dominio.Pessoas;
 import com.fiapadj.fase1.services.PessoaInvalidoException;
 import com.fiapadj.fase1.services.PessoaService;
@@ -16,8 +16,10 @@ public class PessoaController {
     @Autowired
     private PessoaService pessoaService;
 
+
     @PostMapping
-    public ResponseEntity<?> cadastrarPessoa(@RequestBody Pessoas pessoa) {
+    public ResponseEntity<?> cadastrarPessoa(@RequestBody PessoasForm pessoasForm) {
+        Pessoas pessoa = pessoasForm.toPessoa();
         try {
             pessoaService.validarPessoa(pessoa);
             pessoaService.salvarPessoa(pessoa);

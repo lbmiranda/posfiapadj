@@ -1,7 +1,12 @@
 package com.fiapadj.fase1.dominio;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
+@Getter
+@Setter
 public class Pessoas {
 
     private String nome;
@@ -10,6 +15,14 @@ public class Pessoas {
     private Parentesco parentesco;
     private Integer idade;
     private Integer idPessoa;
+
+    public Pessoas(String nome, Date dataNascimento, Sexo sexo, Parentesco parentesco, Integer idade) {
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.parentesco = parentesco;
+        this.idade = idade;
+    }
 
     public enum Parentesco {
         PAI,
@@ -33,16 +46,6 @@ public class Pessoas {
         FEMININO,
         NAO_BINARIE
     }
-
-    public String getNome() {return nome;}
-    public Date getDataNascimento(){return dataNascimento;}
-    public Sexo getSexo(){return sexo;}
-    public Parentesco getParentesco(){return parentesco;}
-    public Integer getIdade(){return idade;}
-    public Integer getIdPessoa(){return idPessoa;}
-
-
-    public Integer setIdPessoa(Integer idPessoa){return this.idPessoa = idPessoa;}
 }
 
 
