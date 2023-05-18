@@ -4,7 +4,6 @@ import com.fiapadj.fase1.dominio.Endereco;
 import com.fiapadj.fase1.repository.EnderecoRepositorio;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Service
