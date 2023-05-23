@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class Eletronicos {
 
+    private Integer idEletronico;
     private String nome;
     private String modelo;
     private String marca;
@@ -14,8 +15,18 @@ public class Eletronicos {
     private Integer potencia;
 
     public enum Tensao {
-        _110v,
-        _220v
+        _110v("110v"),
+        _220v("220v");
+
+        private String value;
+
+        Tensao(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
     }
 
     public Eletronicos (String nome, String modelo, String marca, Tensao tensao, Integer potencia) {
