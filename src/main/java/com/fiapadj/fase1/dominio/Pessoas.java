@@ -32,5 +32,3 @@ public class Pessoas {
         MASCULINO, FEMININO, NAO_BINARIE
     }
 }
-
-

@@ -15,5 +15,3 @@ public class EnderecoRepositorio {
         return enderecos;
     }
 }
-
-

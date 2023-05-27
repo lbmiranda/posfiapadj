@@ -46,4 +46,3 @@ public class Endereco {
         return estado;
     }
 }
-
