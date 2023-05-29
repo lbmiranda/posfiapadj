@@ -14,11 +14,18 @@ public class Eletronicos {
     private Tensao tensao;
     private Integer potencia;
 
-    public enum Tensao {
-        _110v("110v"),
-        _220v("220v");
+    public Eletronicos(String nome, String modelo, String marca, Tensao tensao, Integer potencia) {
+        this.nome = nome;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.tensao = tensao;
+        this.potencia = potencia;
+    }
 
-        private String value;
+    public enum Tensao {
+        _110v("110v"), _220v("220v");
+
+        private final String value;
 
         Tensao(String value) {
             this.value = value;
@@ -28,13 +35,4 @@ public class Eletronicos {
             return value;
         }
     }
-
-    public Eletronicos (String nome, String modelo, String marca, Tensao tensao, Integer potencia) {
-        this.nome = nome;
-        this.modelo = modelo;
-        this.marca = marca;
-        this.tensao = tensao;
-        this.potencia = potencia;
-    }
-
 }

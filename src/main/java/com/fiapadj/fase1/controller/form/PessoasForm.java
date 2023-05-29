@@ -2,6 +2,7 @@ package com.fiapadj.fase1.controller.form;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fiapadj.fase1.dominio.Pessoas;
+import com.fiapadj.fase1.services.PessoaInvalidoException;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
@@ -16,17 +17,34 @@ public class PessoasForm {
     private Date dataNascimento;
     @JsonProperty
     @NotNull(message = "Campo 'sexo' é obrigatório")
-    private Pessoas.Sexo sexo;
+    private String sexo;
     @JsonProperty
     @NotNull(message = "Parentesco é obrigatório")
-    private Pessoas.Parentesco parentesco;
+    private String parentesco;
     @JsonProperty
     @NotNull(message = "Idade é obrigatório")
     private Integer idade;
 
     public Pessoas toPessoa() {
-        return new Pessoas(nome,dataNascimento,sexo,parentesco,idade);
+        Pessoas.Sexo sexoEnum = verificarSexo(this.sexo);
+        Pessoas.Parentesco parentescoEnum = verificarParentesco(this.parentesco);
+
+        return new Pessoas(nome, dataNascimento, sexoEnum, parentescoEnum, idade);
     }
 
+    private Pessoas.Sexo verificarSexo(String valor) {
+        try {
+            return Pessoas.Sexo.valueOf(valor.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new PessoaInvalidoException("Sexo inválido: " + valor);
+        }
+    }
 
+    private Pessoas.Parentesco verificarParentesco(String valor) {
+        try {
+            return Pessoas.Parentesco.valueOf(valor.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new PessoaInvalidoException("Parentesco inválido: " + valor);
+        }
+    }
 }
