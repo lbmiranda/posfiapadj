@@ -5,16 +5,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Eletronicos {
+public class Eletrodomesticos {
 
-    private Integer idEletronico;
+    private Integer idEletrodomestico;
     private String nome;
     private String modelo;
     private String marca;
     private Tensao tensao;
     private Integer potencia;
 
-    public Eletronicos(String nome, String modelo, String marca, Tensao tensao, Integer potencia) {
+    public Eletrodomesticos(String nome, String modelo, String marca, Tensao tensao, Integer potencia) {
         this.nome = nome;
         this.modelo = modelo;
         this.marca = marca;
