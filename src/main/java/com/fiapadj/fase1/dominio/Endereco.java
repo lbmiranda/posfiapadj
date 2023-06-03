@@ -1,6 +1,7 @@
 package com.fiapadj.fase1.dominio;
 
-
+import lombok.EqualsAndHashCode;
+@EqualsAndHashCode(of = {"idEndereco"})
 public class Endereco {
 
     private final String rua;
@@ -45,4 +46,6 @@ public class Endereco {
     public String getEstado() {
         return estado;
     }
+
+    
 }

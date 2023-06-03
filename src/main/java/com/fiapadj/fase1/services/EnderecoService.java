@@ -1,5 +1,6 @@
 package com.fiapadj.fase1.services;
 
+import com.fiapadj.fase1.controller.form.EnderecoForm;
 import com.fiapadj.fase1.dominio.Endereco;
 import com.fiapadj.fase1.repository.EnderecoRepositorio;
 import lombok.RequiredArgsConstructor;
@@ -20,11 +21,12 @@ public class EnderecoService {
         enderecos.add(endereco);
     }
 
-    public Endereco buscarEnderecoPorId(Integer idEndereco) {
+    public EnderecoForm buscarEnderecoPorId(Integer idEndereco) {
         Set<Endereco> enderecos = repositorio.listarEnderecos();
 
         return enderecos.stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(idEndereco))
+                .map(EnderecoForm::new)
                 .findFirst()
                 .orElse(null);
     }

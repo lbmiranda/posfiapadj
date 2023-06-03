@@ -6,6 +6,7 @@ import com.fiapadj.fase1.services.PessoaInvalidoException;
 import com.fiapadj.fase1.services.PessoaService;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Path;
+import jakarta.validation.Valid;
 import jakarta.validation.Validation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class PessoaController {
     private final PessoaService pessoaService;
 
     @PostMapping
-    public ResponseEntity<?> cadastrarPessoa(@RequestBody PessoasForm pessoasForm) {
+    public ResponseEntity<?> cadastrarPessoa(@RequestBody @Valid PessoasForm pessoasForm) {
         try {
             Set<ConstraintViolation<PessoasForm>> violacoes = Validation
                     .buildDefaultValidatorFactory().getValidator().validate(pessoasForm);
@@ -35,7 +36,8 @@ public class PessoaController {
                 return ResponseEntity.badRequest().body(violacoesToMap);
             }
 
-            Pessoas pessoa = pessoasForm.toPessoa();
+            
+            Pessoas pessoa = new Pessoas(pessoasForm);
             pessoaService.salvarPessoa(pessoa);
 
             return ResponseEntity.status(HttpStatus.CREATED).body(pessoa);
@@ -45,8 +47,8 @@ public class PessoaController {
     }
 
     @GetMapping("{idPessoa}")
-    public ResponseEntity<Pessoas> consultarPessoaPorId(@PathVariable Integer idPessoa) {
-        Pessoas pessoa = pessoaService.buscarPessoaPorId(idPessoa);
+    public ResponseEntity<PessoasForm> consultarPessoaPorId(@PathVariable Integer idPessoa) {
+        PessoasForm pessoa = pessoaService.buscarPessoaPorId(idPessoa);
 
         if (pessoa != null) {
             return ResponseEntity.ok().body(pessoa);
