@@ -1,10 +1,12 @@
 package com.fiapadj.fase1.dominio;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@EqualsAndHashCode(of = {"idEletrodomestico"})
 public class Eletrodomesticos {
 
     private Integer idEletrodomestico;
