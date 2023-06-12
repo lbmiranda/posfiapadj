@@ -2,52 +2,29 @@ package com.fiapadj.fase1.controller.form;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fiapadj.fase1.dominio.Eletrodomesticos;
-import com.fiapadj.fase1.services.EletrodomesticosInvalidoException;
+import com.fiapadj.fase1.dominio.Tensao;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class EletrodomesticosForm {
 
     @JsonProperty
+    @NotBlank(message = "{nome.obrigatorio}")
     private String nome;
     @JsonProperty
+    @NotBlank(message = "{modelo.obrigatorio}")
     private String modelo;
     @JsonProperty
+    @NotBlank(message = "{marca.obrigatorio}")
     private String marca;
     @JsonProperty
-    private String tensao;
+    @NotNull(message = "Tensão é obrigatória e aceita apenas os valores _110v ou _220v")
+    private Tensao tensao;
     @JsonProperty
+    @NotNull(message = "{potencia.obrigatorio}")
     private Integer potencia;
 
     public Eletrodomesticos toEletrodomestico() {
-        Eletrodomesticos.Tensao tensaoEnum = verificarTensao(this.tensao);
-        Eletrodomesticos eletrodomesticos = new Eletrodomesticos(nome, modelo, marca, tensaoEnum, potencia);
-        validarEletrodomestico(eletrodomesticos);
-
-        return eletrodomesticos;
-    }
-
-    private void validarEletrodomestico(Eletrodomesticos eletrodomestico) throws EletrodomesticosInvalidoException {
-        if (eletrodomestico.getNome() == null || eletrodomestico.getNome().isEmpty()) {
-            throw new EletrodomesticosInvalidoException("Nome é obrigatório");
-        }
-        if (eletrodomestico.getModelo() == null || eletrodomestico.getModelo().isEmpty()) {
-            throw new EletrodomesticosInvalidoException("Modelo é obrigatório");
-        }
-        if (eletrodomestico.getMarca() == null || eletrodomestico.getMarca().isEmpty()) {
-            throw new EletrodomesticosInvalidoException("Marca é obrigatória");
-        }
-        if (eletrodomestico.getPotencia() == null) {
-            throw new EletrodomesticosInvalidoException("Potência é obrigatória");
-        }
-    }
-
-    private Eletrodomesticos.Tensao verificarTensao(String valor) {
-        if (valor == null) {
-            throw new EletrodomesticosInvalidoException("Tensão é obrigatória e aceita apenas os valores _110v ou _220v");
-        }
-        try {
-            return Eletrodomesticos.Tensao.valueOf(valor);
-        } catch (IllegalArgumentException e) {
-            throw new EletrodomesticosInvalidoException("Tensão inválida: " + valor);
-        }
+        return new Eletrodomesticos(nome, modelo, marca, tensao, potencia);
     }
 }

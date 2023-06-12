@@ -1,10 +1,9 @@
 package com.fiapadj.fase1.controller.form;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fiapadj.fase1.dominio.Parentesco;
 import com.fiapadj.fase1.dominio.Pessoas;
-import com.fiapadj.fase1.dominio.Pessoas.Parentesco;
-import com.fiapadj.fase1.dominio.Pessoas.Sexo;
-
+import com.fiapadj.fase1.dominio.Sexo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -32,14 +31,6 @@ public class PessoasForm {
     @NotNull(message = "{idade.obrigatorio}")
     private Integer idade;
 
-    // public Pessoas toPessoa() {
-    //     // Pessoas.Sexo sexoEnum = verificarSexo(this.sexo);
-    //     // Pessoas.Parentesco parentescoEnum = verificarParentesco(this.parentesco);
-
-    //     // return new Pessoas(nome, dataNascimento, sexoEnum, parentescoEnum, idade);
-    //     return new Pessoas(nome, dataNascimento, sexo, parentesco, idade);
-    // }
-
     public PessoasForm(Pessoas pessoa) {
         this(pessoa.getNome(), pessoa.getDataNascimento(), pessoa.getSexo(), pessoa.getParentesco(), pessoa.getIdade());
     }
@@ -51,20 +42,4 @@ public class PessoasForm {
         this.parentesco = parentesco;
         this.idade = idade;
     }
-
-    // private Pessoas.Sexo verificarSexo(String valor) {
-    //     try {
-    //         return Pessoas.Sexo.valueOf(valor.toUpperCase());
-    //     } catch (IllegalArgumentException e) {
-    //         throw new PessoaInvalidoException("Sexo inválido: " + valor);
-    //     }
-    // }
-
-    // private Pessoas.Parentesco verificarParentesco(String valor) {
-    //     try {
-    //         return Pessoas.Parentesco.valueOf(valor.toUpperCase());
-    //     } catch (IllegalArgumentException e) {
-    //         throw new PessoaInvalidoException("Parentesco inválido: " + valor);
-    //     }
-    // }
 }

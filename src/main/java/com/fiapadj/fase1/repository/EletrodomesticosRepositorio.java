@@ -11,7 +11,7 @@ public class EletrodomesticosRepositorio {
 
     private Set<Eletrodomesticos> eletrodomesticos = new HashSet<>();
 
-    public Set<Eletrodomesticos> listarEletrodomesticos() {return eletrodomesticos;}
-
-
+    public Set<Eletrodomesticos> listarEletrodomesticos() {
+        return eletrodomesticos;
+    }
 }

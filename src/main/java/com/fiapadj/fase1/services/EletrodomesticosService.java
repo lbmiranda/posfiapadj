@@ -1,6 +1,5 @@
 package com.fiapadj.fase1.services;
 
-
 import com.fiapadj.fase1.dominio.Eletrodomesticos;
 import com.fiapadj.fase1.repository.EletrodomesticosRepositorio;
 import lombok.RequiredArgsConstructor;

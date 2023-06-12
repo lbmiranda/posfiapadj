@@ -1,11 +1,11 @@
 package com.fiapadj.fase1.dominio;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = {"idEletrodomestico"})
 public class Eletrodomesticos {
 
@@ -22,19 +22,5 @@ public class Eletrodomesticos {
         this.marca = marca;
         this.tensao = tensao;
         this.potencia = potencia;
-    }
-
-    public enum Tensao {
-        _110v("110v"), _220v("220v");
-
-        private final String value;
-
-        Tensao(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
     }
 }

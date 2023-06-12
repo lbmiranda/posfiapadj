@@ -1,16 +1,15 @@
 package com.fiapadj.fase1.dominio;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import com.fiapadj.fase1.controller.form.PessoasForm;
+import lombok.*;
 
 import java.util.Date;
 
-import com.fiapadj.fase1.controller.form.PessoasForm;
-
 @Getter
 @Setter
-@EqualsAndHashCode(of = { "idPessoa" })
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = {"idPessoa"})
 public class Pessoas {
 
     private String nome;
@@ -26,13 +25,5 @@ public class Pessoas {
         this.sexo = dados.getSexo();
         this.parentesco = dados.getParentesco();
         this.idade = dados.getIdade();
-    }
-
-    public enum Parentesco {
-        PAI, MAE, FILHO, FILHA, IRMÃO, IRMÃ, AVÓS, TIO, TIA, PRIMO, PRIMA, SOBRINHO, SOBRINHA, OUTRO
-    }
-
-    public enum Sexo {
-        MASCULINO, FEMININO, NAO_BINARIE
     }
 }

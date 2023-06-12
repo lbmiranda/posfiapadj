@@ -4,7 +4,6 @@ import com.fiapadj.fase1.controller.form.EnderecoForm;
 import com.fiapadj.fase1.dominio.Endereco;
 import com.fiapadj.fase1.services.EnderecoInvalidoException;
 import com.fiapadj.fase1.services.EnderecoService;
-
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

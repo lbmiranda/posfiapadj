@@ -36,7 +36,6 @@ public class PessoaController {
                 return ResponseEntity.badRequest().body(violacoesToMap);
             }
 
-            
             Pessoas pessoa = new Pessoas(pessoasForm);
             pessoaService.salvarPessoa(pessoa);
 
