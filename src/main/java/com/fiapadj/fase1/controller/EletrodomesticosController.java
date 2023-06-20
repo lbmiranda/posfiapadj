@@ -21,6 +21,7 @@ public class EletrodomesticosController {
     public ResponseEntity<?> cadastrarEletrodomestico(@RequestBody @Valid EletrodomesticosForm eletrodomesticoForm) {
         try {
             Eletrodomesticos eletrodomestico = eletrodomesticoForm.toEletrodomestico();
+            
             eletrodomesticosService.salvarEletrodomestico(eletrodomestico);
 
             return ResponseEntity.status(HttpStatus.CREATED).body(eletrodomestico);
@@ -30,8 +31,8 @@ public class EletrodomesticosController {
     }
 
     @GetMapping("{idEletrodomestico}")
-    public ResponseEntity<Eletrodomesticos> consultarEletronicoPorId(@PathVariable Integer idEletrodomestico) {
-        Eletrodomesticos eletrodomestico = eletrodomesticosService.consultarEletrodomesticoPorId(idEletrodomestico);
+    public ResponseEntity<EletrodomesticosForm> consultarEletronicoPorId(@PathVariable Integer idEletrodomestico) {
+        EletrodomesticosForm eletrodomestico = eletrodomesticosService.consultarEletrodomesticoPorId(idEletrodomestico);
 
         if (eletrodomestico != null) {
             return ResponseEntity.ok().body(eletrodomestico);
