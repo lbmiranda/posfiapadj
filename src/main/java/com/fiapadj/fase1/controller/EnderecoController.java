@@ -33,10 +33,6 @@ public class EnderecoController {
     public ResponseEntity<EnderecoForm> consultarEnderecoPorId(@PathVariable Integer idEndereco) {
         EnderecoForm endereco = enderecoService.buscarEnderecoPorId(idEndereco);
 
-        if (endereco != null) {
-            return ResponseEntity.ok().body(endereco);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(endereco);
     }
 }

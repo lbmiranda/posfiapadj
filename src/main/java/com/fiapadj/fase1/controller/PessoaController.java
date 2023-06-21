@@ -49,10 +49,6 @@ public class PessoaController {
     public ResponseEntity<PessoasForm> consultarPessoaPorId(@PathVariable Integer idPessoa) {
         PessoasForm pessoa = pessoaService.buscarPessoaPorId(idPessoa);
 
-        if (pessoa != null) {
-            return ResponseEntity.ok().body(pessoa);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(pessoa);
     }
 }

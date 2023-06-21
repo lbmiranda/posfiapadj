@@ -34,10 +34,6 @@ public class EletrodomesticosController {
     public ResponseEntity<EletrodomesticosForm> consultarEletronicoPorId(@PathVariable Integer idEletrodomestico) {
         EletrodomesticosForm eletrodomestico = eletrodomesticosService.consultarEletrodomesticoPorId(idEletrodomestico);
 
-        if (eletrodomestico != null) {
-            return ResponseEntity.ok().body(eletrodomestico);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(eletrodomestico);
     }
 }

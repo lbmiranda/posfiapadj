@@ -2,7 +2,9 @@ package com.fiapadj.fase1.services;
 
 import com.fiapadj.fase1.controller.form.EletrodomesticosForm;
 import com.fiapadj.fase1.dominio.Eletrodomesticos;
+import com.fiapadj.fase1.dominio.Tensao;
 import com.fiapadj.fase1.repository.EletrodomesticosRepositorio;
+import com.fiapadj.fase1.services.exception.ControllerNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,6 @@ public class EletrodomesticosService {
                 .filter(eletrodomestico -> eletrodomestico.getIdEletrodomestico().equals(idEletrodomestico))
                 .map(EletrodomesticosForm::new)
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new ControllerNotFoundException("Eletrodoméstico não encontrado"));
     }
 }

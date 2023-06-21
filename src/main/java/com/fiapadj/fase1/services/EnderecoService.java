@@ -3,6 +3,7 @@ package com.fiapadj.fase1.services;
 import com.fiapadj.fase1.controller.form.EnderecoForm;
 import com.fiapadj.fase1.dominio.Endereco;
 import com.fiapadj.fase1.repository.EnderecoRepositorio;
+import com.fiapadj.fase1.services.exception.ControllerNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,6 @@ public class EnderecoService {
                 .filter(endereco -> endereco.getIdEndereco().equals(idEndereco))
                 .map(EnderecoForm::new)
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new ControllerNotFoundException("Endereço não encontrado"));
     }
 }

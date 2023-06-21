@@ -3,9 +3,9 @@ package com.fiapadj.fase1.services;
 import com.fiapadj.fase1.controller.form.PessoasForm;
 import com.fiapadj.fase1.dominio.Pessoas;
 import com.fiapadj.fase1.repository.PessoaRepositorio;
+import com.fiapadj.fase1.services.exception.ControllerNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.Set;
 
 @Service
@@ -27,7 +27,6 @@ public class PessoaService {
         return pessoas.stream()
                 .filter(pessoa -> pessoa.getIdPessoa().equals(idPessoa))
                 .map(PessoasForm::new)
-                .findFirst()
-                .orElse(null);
+                .findFirst().orElseThrow(() -> new ControllerNotFoundException("Pessoa não encontrada"));
     }
 }
