@@ -33,7 +33,7 @@ public class ControllerExceptionHandler {
         error.setStatus(status.value());
         error.setError("Valor inválido");
         error.setPath(request.getRequestURI());
-        error.setMessage("Tensão aceita apenas os valores 110v ou 220v");
+        error.setMessage(request.getRequestURI().contains("pessoas") ? "Sexo aceitar apenas os valores MASCULINO, FEMININO, NAO_BINARIE." : "Tensão aceita apenas os valores 110v ou 220v");
         return ResponseEntity.status(status).body(error);
     }
 

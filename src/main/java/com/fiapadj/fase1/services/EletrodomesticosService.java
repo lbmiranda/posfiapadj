@@ -2,7 +2,6 @@ package com.fiapadj.fase1.services;
 
 import com.fiapadj.fase1.controller.form.EletrodomesticosForm;
 import com.fiapadj.fase1.dominio.Eletrodomesticos;
-import com.fiapadj.fase1.dominio.Tensao;
 import com.fiapadj.fase1.repository.EletrodomesticosRepositorio;
 import com.fiapadj.fase1.services.exception.ControllerNotFoundException;
 import lombok.RequiredArgsConstructor;
