@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -33,8 +35,23 @@ public class ControllerExceptionHandler {
         error.setStatus(status.value());
         error.setError("Valor inválido");
         error.setPath(request.getRequestURI());
-        error.setMessage(request.getRequestURI().contains("pessoas") ? "Sexo aceitar apenas os valores MASCULINO, FEMININO, NAO_BINARIE." : "Tensão aceita apenas os valores 110v ou 220v");
+        error.setMessage(request.getRequestURI().contains("pessoas")
+                ? "Sexo aceitar apenas os valores MASCULINO, FEMININO, NAO_BINARIE."
+                : "Tensão aceita apenas os valores 110v ou 220v");
         return ResponseEntity.status(status).body(error);
+    }
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> tratarErro400(MethodArgumentNotValidException ex) {
+        var erros = ex.getFieldErrors();
+        return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
+    }
+
+    private record DadosErroValidacao(String campo, String mensagem) {
+
+        public DadosErroValidacao(FieldError erro) {
+            this(erro.getField(), erro.getDefaultMessage());
+        }
     }
 
 
