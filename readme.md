@@ -84,8 +84,7 @@ A API permite criar e recuperar registros de Pessoas, Endereços e Eletrônicos.
     "dataNascimento": "1990-05-15T00:00:00.000+00:00",
     "sexo": "MASCULINO",
     "parentesco": "PAI",
-    "idade": 50,
-    "idPessoa": 0
+    "idade": 50
 }
 ```
 
@@ -128,7 +127,6 @@ A API permite criar e recuperar registros de Pessoas, Endereços e Eletrônicos.
 ##### Exemplo de resposta
 ```json
 {
-    "idEndereco": 0,
     "rua": "Rua de Teste da Silva",
     "numero": 456,
     "bairro": "Teste Grande",
@@ -178,7 +176,6 @@ A API permite criar e recuperar registros de Pessoas, Endereços e Eletrônicos.
 ##### Exemplo de resposta
 ```json
 {
-    "idEletronico": 0,
     "nome": "Teste Power 5000",
     "modelo": "A54etR",
     "marca": "Panasonic",
