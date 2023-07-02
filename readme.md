@@ -136,7 +136,7 @@ A API permite criar e recuperar registros de Pessoas, Endereços e Eletrônicos.
 ```
 
 
-#### 5. Criar um eletrônico
+#### 5. Criar um eletrodoméstico
 
 - **URL:** `/eletrodomesticos`
 - **Método:** POST
@@ -165,7 +165,7 @@ A API permite criar e recuperar registros de Pessoas, Endereços e Eletrônicos.
 }
 ```
 
-#### 6. Recuperar um eletrônico
+#### 6. Recuperar um eletrodoméstico
 - **URL:** `/eletrodomesticos/{id}`
 - **Método:** GET
 - **Descrição:** Recupera eletrônico cadastrado com base no atributo idEletronico.
