@@ -40,7 +40,7 @@ A API permite criar e recuperar registros de Pessoas, Endereços e Eletrônicos.
 
 #### 1. Criar uma Pessoa
 
-- **URL:** `/pessoa`
+- **URL:** `/pessoas`
 - **Método:** POST
 - **Descrição:** Cria um objeto Pessoa.
 
@@ -70,7 +70,7 @@ A API permite criar e recuperar registros de Pessoas, Endereços e Eletrônicos.
 
 #### 2. Recuperar pessoa
 
-- **URL:** `/pessoa/{id}`
+- **URL:** `/pessoas/{id}`
 - **Método:** GET
 - **Descrição:** Recupera pessoa cadastrada com base no atributo idPessoa.
 
@@ -89,7 +89,7 @@ A API permite criar e recuperar registros de Pessoas, Endereços e Eletrônicos.
 ```
 
 #### 3. Criar um endereço
-- **URL:** `/endereco`
+- **URL:** `/enderecos`
 - **Método:** POST
 - **Descrição:** Cria um objeto Endereco.
 
@@ -117,7 +117,7 @@ A API permite criar e recuperar registros de Pessoas, Endereços e Eletrônicos.
 ```
 
 #### 4. Recuperar um endereço
-- **URL:** `/endereco/{id}`
+- **URL:** `/enderecos/{id}`
 - **Método:** GET
 - **Descrição:** Recupera endereço cadastrado com base no atributo idEndereco.
 
